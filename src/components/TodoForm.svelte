@@ -1,18 +1,15 @@
 <script>
-	let todo = '';
 	import { addTodo } from '../stores/todoStore.js';
+	import { user } from '../stores/authStore.js';
+	let todo = '';
 	const handleSubmit = () => {
-		addTodo(todo);
+		addTodo(todo, $user.id);
 		todo = '';
 		console.log('submitting');
 	};
 </script>
 
-<form
-	id="todoForm"
-	class="my-6 flex flex-col w-3/4 lg:w-2/5"
-	on:submit|preventDefault={handleSubmit}
->
+<form id="todoForm" class="my-6 flex flex-col " on:submit|preventDefault={handleSubmit}>
 	<div class="flex flex-col text-sm mb-2">
 		<label for="todo" class="font-bold mb-2 text-gray-800">Todo</label>
 		<input
